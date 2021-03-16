@@ -1,0 +1,17 @@
+    public void reserve(){
+        Node reserve_head=new Node("");
+        Node next=null;
+        Node cur=head.next;
+        while (cur!=null){
+        //保存next，后面好接上，让临时cur节点循环下一个下一个
+            next=cur.next;         //因为后面的temp.next.next的数据都没被修改！！！
+
+            //cur.next=reverseHead.next和reverseHead.next=cur为头插法！！！
+            cur.next=reserve_head.next;
+            reserve_head.next=cur;
+
+            cur=next;
+        }
+        head.next=reserve_head.next;
+        show();
+    }
